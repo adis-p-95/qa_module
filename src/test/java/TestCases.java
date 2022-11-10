@@ -42,7 +42,6 @@ public class TestCases {
         Assert.assertTrue(inventoryPage.isLinkedinLinkPresent(), "Linkedin link is not present on page.");
         Assert.assertEquals(inventoryPage.getLinkedinLink(), "https://www.linkedin.com/company/sauce-labs/", "Linkedin link is not valid.");
 
-        Assert.assertFalse(inventoryPage.isLogoutPresent(), "Logout button presents even Burger Button is not clicked.");
         inventoryPage.pressBurgerButton();
         inventoryPage.waitForLogoutButton();
         Assert.assertTrue(inventoryPage.isLogoutPresent(), "Logout is not present on page.");
@@ -75,6 +74,7 @@ public class TestCases {
 
         Assert.assertTrue(backpackPage.isBackToProductPresent(), "Back to product button is not present on page.");
         backpackPage.clickOnBackToProducts();
+
         Assert.assertTrue(inventoryPage.isJacketItemPresent(), "Jacket item is not present on page.");
         Assert.assertTrue(inventoryPage.isJacketItemAddToCartPresent(), "Add to cart button is not present on page.");
         inventoryPage.clickJacketItemAddToCart();
@@ -102,7 +102,6 @@ public class TestCases {
         Assert.assertTrue(checkoutPage.isCompleteHeaderPresent(), "Complete header is not present on page.");
         Assert.assertEquals(checkoutPage.getCompleteHeaderText(), "THANK YOU FOR YOUR ORDER", "Confirmation message is not correct.");
 
-        Assert.assertFalse(inventoryPage.isLogoutPresent(), "Logout button presents even Burger Button is not clicked.");
         inventoryPage.pressBurgerButton();
         inventoryPage.waitForLogoutButton();
         Assert.assertTrue(inventoryPage.isLogoutPresent(), "Logout is not present on page.");
