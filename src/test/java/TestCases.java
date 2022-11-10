@@ -5,19 +5,17 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class TestPlan {
+public class TestCases {
     private static WebDriver driver;
 
-    @BeforeClass(alwaysRun=true)
-    public void openMain()
-    {
+    @BeforeClass(alwaysRun = true)
+    public void openMain() {
         System.setProperty("webdriver.chrome.driver", Configurations.CHROME_DRIVER_LOCATION);
         driver = new ChromeDriver();
     }
 
     @Test(testName = "TestCase1 - LoginAndHomePagesVerifications")
-    public static void LoginTest()
-    {
+    public static void LoginTest() {
         driver.get(Configurations.BASE_URL);
 
         LoginPage loginPage = new LoginPage(driver, "standard_user", "secret_sauce");
@@ -47,14 +45,13 @@ public class TestPlan {
         Assert.assertFalse(inventoryPage.isLogoutPresent(), "Logout button presents even Burger Button is not clicked.");
         inventoryPage.pressBurgerButton();
         inventoryPage.waitForLogoutButton();
-        Assert.assertTrue(inventoryPage.isLogoutPresent(),"Logout is not present on page.");
+        Assert.assertTrue(inventoryPage.isLogoutPresent(), "Logout is not present on page.");
         inventoryPage.clickOnLogoutButton();
 
     }
 
     @Test(testName = "TestCase2 - Shopping")
-    public static void ShoppingTest()
-    {
+    public static void ShoppingTest() {
         driver.get(Configurations.BASE_URL);
         LoginPage loginPage = new LoginPage(driver, "standard_user", "secret_sauce");
 
@@ -103,12 +100,12 @@ public class TestPlan {
         checkoutPage.clickOnFinishButton();
 
         Assert.assertTrue(checkoutPage.isCompleteHeaderPresent(), "Complete header is not present on page.");
-        Assert.assertEquals(checkoutPage.getCompleteHeaderText(), "THANK YOU FOR YOUR ORDER");
+        Assert.assertEquals(checkoutPage.getCompleteHeaderText(), "THANK YOU FOR YOUR ORDER", "Confirmation message is not correct.");
 
         Assert.assertFalse(inventoryPage.isLogoutPresent(), "Logout button presents even Burger Button is not clicked.");
         inventoryPage.pressBurgerButton();
         inventoryPage.waitForLogoutButton();
-        Assert.assertTrue(inventoryPage.isLogoutPresent(),"Logout is not present on page.");
+        Assert.assertTrue(inventoryPage.isLogoutPresent(), "Logout is not present on page.");
         inventoryPage.clickOnLogoutButton();
     }
 
@@ -117,5 +114,4 @@ public class TestPlan {
         driver.manage().deleteAllCookies();
         driver.close();
     }
-
 }

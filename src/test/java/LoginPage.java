@@ -21,6 +21,9 @@ public class LoginPage extends PageObject {
     @FindBy(xpath = "//input[@id=\"login-button\"]")
     private WebElement login_button;
 
+    @FindBy(xpath = "//div[@class=\"error-message-container error\"]")
+    private WebElement error_message;
+
     public void enterUsername() {
         this.username_we.sendKeys(username);
     }
@@ -32,4 +35,13 @@ public class LoginPage extends PageObject {
     public void pressLogin() {
         this.login_button.click();
     }
+
+    public boolean errorMessage() {
+        return error_message.isDisplayed();
+    }
+
+    public String getErrorMessage() {
+        return error_message.getText();
+    }
+
 }
