@@ -46,7 +46,6 @@ public class TestCases {
         inventoryPage.waitForLogoutButton();
         Assert.assertTrue(inventoryPage.isLogoutPresent(), "Logout is not present on page.");
         inventoryPage.clickOnLogoutButton();
-
     }
 
     @Test(testName = "TestCase2 - Shopping")
@@ -111,6 +110,6 @@ public class TestCases {
     @AfterTest
     public static void cleanUp(){
         driver.manage().deleteAllCookies();
-        driver.close();
+        driver.quit();
     }
 }

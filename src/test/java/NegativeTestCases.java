@@ -18,7 +18,7 @@ public class NegativeTestCases {
 
     @DataProvider(name = "loginData")
     public static Object[][] LoginData(){
-        return new Object[][]{
+        return new Object[][] {
                 {"username", "password"},
                 {"standard_user", "secret"},
                 {"user1", "secret_sauce"},
@@ -52,6 +52,6 @@ public class NegativeTestCases {
     @AfterTest
     public static void cleanUp(){
         driver.manage().deleteAllCookies();
-        driver.close();
+        driver.quit();
     }
 }
